@@ -48,6 +48,14 @@ namespace Visual_ContactList
                     t.Clear();
                 }//if it is a text box
             }//foreach
+            foreach (var item in grbSearch.Controls)
+            {
+                if (item.GetType() == t.GetType())
+                {
+                    t = (TextBox)item;
+                    t.Clear();
+                }//if it is a text box
+            }//foreach
         }//clear_entry
         //-----------------------------------------------------------------------------------------
         private bool check_data_entry()
@@ -85,6 +93,8 @@ namespace Visual_ContactList
             btnNewContact.Enabled = true;
             btnEdit.Enabled = true;
             btnDelete.Enabled = true;
+            clear_entry();
+            tbl_ContactTableAdapter.Fill(contactListDataDataSet.tbl_Contact);
         }//btnCancel_Click
         //-----------------------------------------------------------------------------------------
         private void btnNewContact_Click(object sender, EventArgs e)
@@ -152,7 +162,7 @@ namespace Visual_ContactList
                     }//if contact is duplicated 
                     else
                     {
-                        tbl_ContactTableAdapter.UpdateContact(txtFirstName.Text.Trim(), txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhoneHome.Text, txtPhoneWork.Text.Trim(), txtMobile.Text.Trim(), txtAddress.Text.Trim(),int.Parse(txtContactID.Text));
+                        tbl_ContactTableAdapter.UpdateContact(txtFirstName.Text.Trim(), txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhoneHome.Text, txtPhoneWork.Text.Trim(), txtMobile.Text.Trim(), txtAddress.Text.Trim(), int.Parse(txtContactID.Text));
                         tbl_ContactTableAdapter.Fill(contactListDataDataSet.tbl_Contact);
                         clear_entry();
                         grbEditData.Enabled = false;
@@ -229,6 +239,65 @@ namespace Visual_ContactList
             return result;
         }//check_contact_existance
         //-----------------------------------------------------------------------------------------
+        private void btnFirstRecord_Click(object sender, EventArgs e)
+        {
+            tblContactBindingSource.MoveFirst();
+        }//btnFirstRecord_Click
+        //-----------------------------------------------------------------------------------------
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            tblContactBindingSource.MoveNext();
+        }//btnNext_Click
+        //-----------------------------------------------------------------------------------------
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            tblContactBindingSource.MovePrevious();
+        }//btnPrevious_Click
+        //-----------------------------------------------------------------------------------------
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            tblContactBindingSource.MoveLast();
+        }//btnLast_Click
+        //-----------------------------------------------------------------------------------------
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string strTitle = Properties.Resources.EnglishProgramTitle;
+            string strMessage = "";
 
+
+            if ((txtFirstNameSearch.Text.Length == 0) && (txtLastNameSearch.Text.Length == 0))
+            {
+                strMessage = "Search is possible on First and Last name of the contact";
+                MessageBox.Show(strMessage, strTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }//if searchbox is empty
+            else {
+                if ((txtFirstNameSearch.Text.Length > 0) && (txtLastNameSearch.Text.Length == 0)){
+                    tbl_ContactTableAdapter.Fill_SearchByFirstname(contactListDataDataSet.tbl_Contact,txtFirstNameSearch.Text); 
+                }//if search is based on firstname
+                else if ((txtFirstNameSearch.Text.Length == 0) && (txtLastNameSearch.Text.Length > 0))
+                {
+                    tbl_ContactTableAdapter.FillBy_SearchByLastName(contactListDataDataSet.tbl_Contact, txtLastNameSearch.Text);
+                }//else if search is based on Lastname
+                else if ((txtFirstNameSearch.Text.Length > 0) && (txtLastNameSearch.Text.Length > 0))
+                {
+                    tbl_ContactTableAdapter.FillBy_SearchByFirstnameAndLastName(contactListDataDataSet.tbl_Contact,txtFirstNameSearch.Text, txtLastNameSearch.Text);
+                }//else if search is based on firstname and 
+
+
+            }//else if data is entered
+        }//btnSearch_Click
+        //-----------------------------------------------------------------------------------------
+        private void btnListAll_Click(object sender, EventArgs e)
+        {
+            clear_entry();
+            grbEditData.Enabled = false;
+            _currentOperation = DataBaseOperation.Read;
+            btnNewContact.Enabled = true;
+            btnEdit.Enabled = true;
+            btnDelete.Enabled = true;
+            clear_entry();            
+            tbl_ContactTableAdapter.Fill(contactListDataDataSet.tbl_Contact);
+        }//btnListAll_Click
+        //-----------------------------------------------------------------------------------------
     }//Form
 }//Visual_ContactList

@@ -53,6 +53,10 @@
             this.btnNewContact = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnFirstRecord = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnLast = new System.Windows.Forms.Button();
             this.contactIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,11 +68,19 @@
             this.tblContactBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contactListDataDataSet = new Visual_ContactList.ContactListDataDataSet();
             this.tbl_ContactTableAdapter = new Visual_ContactList.ContactListDataDataSetTableAdapters.tbl_ContactTableAdapter();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtFirstNameSearch = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtLastNameSearch = new System.Windows.Forms.TextBox();
+            this.grbSearch = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnListAll = new System.Windows.Forms.Button();
             this.grbContactList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).BeginInit();
             this.grbEditData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblContactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactListDataDataSet)).BeginInit();
+            this.grbSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbContactList
@@ -123,7 +135,7 @@
             this.grbEditData.Controls.Add(this.txtContactID);
             this.grbEditData.Controls.Add(this.label1);
             this.grbEditData.Enabled = false;
-            this.grbEditData.Location = new System.Drawing.Point(12, 231);
+            this.grbEditData.Location = new System.Drawing.Point(13, 316);
             this.grbEditData.Name = "grbEditData";
             this.grbEditData.Size = new System.Drawing.Size(755, 251);
             this.grbEditData.TabIndex = 1;
@@ -328,6 +340,58 @@
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnFirstRecord
+            // 
+            this.btnFirstRecord.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnFirstRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFirstRecord.ForeColor = System.Drawing.Color.GreenYellow;
+            this.btnFirstRecord.Location = new System.Drawing.Point(774, 181);
+            this.btnFirstRecord.Name = "btnFirstRecord";
+            this.btnFirstRecord.Size = new System.Drawing.Size(126, 39);
+            this.btnFirstRecord.TabIndex = 3;
+            this.btnFirstRecord.Text = "&First";
+            this.btnFirstRecord.UseVisualStyleBackColor = false;
+            this.btnFirstRecord.Click += new System.EventHandler(this.btnFirstRecord_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.ForeColor = System.Drawing.Color.GreenYellow;
+            this.btnNext.Location = new System.Drawing.Point(774, 226);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(126, 39);
+            this.btnNext.TabIndex = 4;
+            this.btnNext.Text = "Ne&xt";
+            this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevious.ForeColor = System.Drawing.Color.GreenYellow;
+            this.btnPrevious.Location = new System.Drawing.Point(774, 271);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(126, 39);
+            this.btnPrevious.TabIndex = 5;
+            this.btnPrevious.Text = "&Previous";
+            this.btnPrevious.UseVisualStyleBackColor = false;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
+            // btnLast
+            // 
+            this.btnLast.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLast.ForeColor = System.Drawing.Color.GreenYellow;
+            this.btnLast.Location = new System.Drawing.Point(774, 316);
+            this.btnLast.Name = "btnLast";
+            this.btnLast.Size = new System.Drawing.Size(126, 39);
+            this.btnLast.TabIndex = 6;
+            this.btnLast.Text = "&Last";
+            this.btnLast.UseVisualStyleBackColor = false;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
+            // 
             // contactIDDataGridViewTextBoxColumn
             // 
             this.contactIDDataGridViewTextBoxColumn.DataPropertyName = "ContactID";
@@ -390,11 +454,89 @@
             // 
             this.tbl_ContactTableAdapter.ClearBeforeFill = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(5, 40);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 29);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Name:";
+            // 
+            // txtFirstNameSearch
+            // 
+            this.txtFirstNameSearch.Location = new System.Drawing.Point(93, 36);
+            this.txtFirstNameSearch.Name = "txtFirstNameSearch";
+            this.txtFirstNameSearch.Size = new System.Drawing.Size(144, 37);
+            this.txtFirstNameSearch.TabIndex = 8;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(243, 36);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(122, 29);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Last Name:";
+            // 
+            // txtLastNameSearch
+            // 
+            this.txtLastNameSearch.Location = new System.Drawing.Point(371, 36);
+            this.txtLastNameSearch.Name = "txtLastNameSearch";
+            this.txtLastNameSearch.Size = new System.Drawing.Size(249, 37);
+            this.txtLastNameSearch.TabIndex = 10;
+            // 
+            // grbSearch
+            // 
+            this.grbSearch.Controls.Add(this.btnSearch);
+            this.grbSearch.Controls.Add(this.txtLastNameSearch);
+            this.grbSearch.Controls.Add(this.txtFirstNameSearch);
+            this.grbSearch.Controls.Add(this.label9);
+            this.grbSearch.Controls.Add(this.label10);
+            this.grbSearch.Location = new System.Drawing.Point(13, 226);
+            this.grbSearch.Name = "grbSearch";
+            this.grbSearch.Size = new System.Drawing.Size(752, 84);
+            this.grbSearch.TabIndex = 11;
+            this.grbSearch.TabStop = false;
+            this.grbSearch.Text = "Search";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.SpringGreen;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.Color.Chocolate;
+            this.btnSearch.Location = new System.Drawing.Point(626, 38);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(120, 34);
+            this.btnSearch.TabIndex = 11;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnListAll
+            // 
+            this.btnListAll.BackColor = System.Drawing.Color.SpringGreen;
+            this.btnListAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListAll.ForeColor = System.Drawing.Color.Chocolate;
+            this.btnListAll.Location = new System.Drawing.Point(774, 361);
+            this.btnListAll.Name = "btnListAll";
+            this.btnListAll.Size = new System.Drawing.Size(126, 48);
+            this.btnListAll.TabIndex = 12;
+            this.btnListAll.Text = "List &All";
+            this.btnListAll.UseVisualStyleBackColor = false;
+            this.btnListAll.Click += new System.EventHandler(this.btnListAll_Click);
+            // 
             // frmContactList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 484);
+            this.ClientSize = new System.Drawing.Size(904, 574);
+            this.Controls.Add(this.btnListAll);
+            this.Controls.Add(this.grbSearch);
+            this.Controls.Add(this.btnLast);
+            this.Controls.Add(this.btnPrevious);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnFirstRecord);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnNewContact);
@@ -412,6 +554,8 @@
             this.grbEditData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblContactBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactListDataDataSet)).EndInit();
+            this.grbSearch.ResumeLayout(false);
+            this.grbSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -453,6 +597,17 @@
         private System.Windows.Forms.Button btnNewContact;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnFirstRecord;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Button btnLast;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtFirstNameSearch;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtLastNameSearch;
+        private System.Windows.Forms.GroupBox grbSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnListAll;
     }
 }
 
